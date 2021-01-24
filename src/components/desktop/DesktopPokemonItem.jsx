@@ -10,16 +10,16 @@ const Image = Styled.img`
 
 const DesktopPokemonItem = ({ pokemon, id }) => {
   const history = useHistory();
-  const data = useLoadData(`${pokemon.url}`);
+  
   const handleOnClick = () => {
     history.push(`/pokemon/${id}`)
 }
   return (
     <div onClick={handleOnClick}>
-      {data && (
+      {pokemon && (
         <>
-          <Image src={data.sprites.other.dream_world.front_default} />
-          <div>{data.forms[0].name}</div>
+          <Image loading="lazy" src={pokemon.sprites.other.dream_world.front_default} />
+          <div>{pokemon.forms[0].name}</div>
         </>
       )}
     </div>

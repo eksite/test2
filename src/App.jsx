@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
   const pokemonList = useLoadData(
-    "https://pokeapi.co/api/v2/pokemon/?limit=1118"
+    "https://pokeapi.co/api/v2/pokemon/?limit=649"
   );
 
   return pokemonList ? (

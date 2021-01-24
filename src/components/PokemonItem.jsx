@@ -2,6 +2,7 @@ import React from "react";
 import DesktopPokemonItem from "./desktop/DesktopPokemonItem.jsx";
 import MobilePokemonItem from "./mobile/MobilePokemonItem.jsx";
 import Styled from "styled-components";
+import useLoadData from "../hooks/useLoadData.jsx";
 
 const DesktopOnly = Styled.div`
   display: flex;
@@ -27,14 +28,15 @@ const MobileOnly = Styled.div`
 `;
 
 const PokemonItem = ({ pokemon, id }) => {
+  const data = useLoadData(`${pokemon.url}`);
   return (
     <>
       <MobileOnly>
-        <MobilePokemonItem pokemon={pokemon} id={id}/>
+        <MobilePokemonItem pokemon={data} id={id}/>
       </MobileOnly>
 
       <DesktopOnly>
-        <DesktopPokemonItem pokemon={pokemon} id={id} />
+        <DesktopPokemonItem pokemon={data} id={id} />
       </DesktopOnly>
     </>
   );
