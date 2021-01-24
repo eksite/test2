@@ -1,14 +1,14 @@
-import React from "react";
-import DesktopPokemonItem from "./desktop/DesktopPokemonItem.jsx";
-import MobilePokemonItem from "./mobile/MobilePokemonItem.jsx";
+import React, { useEffect, useState } from "react";
 import Styled from "styled-components";
+import MobilePokemonPage from "../components/mobile/MobilePokemonPage.jsx";
+import DesktopPokemonPage from "../components/desktop/DekstopPokemonPage.jsx";
 
 const DesktopOnly = Styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1 0 21%;
   align-items: center;
-  text-align: center;
+  width: 80%;
+  margin: 0 auto;
     @media (max-width: 600px) {
       display: none;
     }
@@ -17,27 +17,25 @@ const DesktopOnly = Styled.div`
 const MobileOnly = Styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1 0 90%;
   align-items: center;
-  text-align: center;
-  padding: 15px 0px 15px 0px;
+  width: 80%;
+  margin: 0 auto;
     @media (min-width: 601px) {
       display: none;
     }
 `;
 
-const PokemonItem = ({ pokemon, id }) => {
+const PokemonPage = (props) => {
   return (
     <>
       <MobileOnly>
-        <MobilePokemonItem pokemon={pokemon} id={id}/>
+        <MobilePokemonPage props={props} />
       </MobileOnly>
-
       <DesktopOnly>
-        <DesktopPokemonItem pokemon={pokemon} id={id} />
+        <DesktopPokemonPage props={props} />
       </DesktopOnly>
     </>
   );
 };
 
-export default PokemonItem;
+export default PokemonPage;

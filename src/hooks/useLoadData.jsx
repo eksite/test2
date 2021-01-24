@@ -9,7 +9,7 @@ const useLoadData = (url) => {
         .then((res) => setData(res));
     };
     loadData();
-  }, []);
+  }, [url]);
   return data;
 };
 
